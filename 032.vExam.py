@@ -11,37 +11,22 @@ def solution(answers):
     cnt1, cnt2, cnt3 = 0, 0, 0
 
     for i in range(0,len(answers)):
-        if cnt1 == 4:
-            cnt1 = 0
-        elif cnt2 == 7:
-            cnt2 = 0
-        elif cnt3 == 9:
-            cnt3 = 0
-
-        student1.append(student1[cnt1])
-        student2.append(student2[cnt2])
-        student3.append(student3[cnt3])
-
-        cnt1 += 1
-        cnt2 += 1
-        cnt3 += 1
-
-        if student1[i]==answers[i] :
+        if student1[i%5]==answers[i] :
             stAnswer[0]+=1
 
-        if student2[i]==answers[i]:
+        if student2[i%8]==answers[i]:
             stAnswer[1]+=1
 
-        if student3[i]==answers[i]:
+        if student3[i%10]==answers[i]:
             stAnswer[2]+=1
 
-    for i in range(0,3):
-        if stAnswer[i] == max(stAnswer):
-            answer.append(i+1)
+    if max(stAnswer) > 0:
+        for i in range(0,3):
+            if stAnswer[i] == max(stAnswer):
+                answer.append(i+1)
         
-    answer.sort()
     return answer
 
-answers = [1,3,2,4,2]
+answers = [6,7,8,9,4,5]
 answer = solution(answers)
 print(answer)
